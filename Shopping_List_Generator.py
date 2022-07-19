@@ -1,17 +1,22 @@
 #Creates a list that can be Changed
 shopList = []
+#Reads the contents of the txt file
+def Readtxt():
+    with open("ShoppingList.txt") as f:
+        contents = f.read()
+        print(contents)
 #Lets the user input items to add to the list and the amount of items 
 def shopInput():
     ItemAdd = 0
-    ItemAdd = int(input("Enter the number of items you want to add"))
+    ItemAdd = int(input("Enter the number of items you want to add "))
     while ItemAdd != 0:
-        shopItem = input("Enter the name of the item to add.")
+        shopItem = input("Enter the name of the item to add ")
         shopList.append(shopItem)
         ItemAdd = ItemAdd - 1
         print(shopList)
 #Lets the user see where the items are within the list
 def itemNum():
-    Numb = int(input("Enter the number to see the item:"))
+    Numb = int(input("Enter the number to see the item "))
     Numb = Numb - 1
     listNumb = shopList[Numb]
     print(listNumb)
@@ -23,7 +28,7 @@ def listAmount():
 def delItem():
 
     print(shopList)
-    ItemDel = int(input("enter the number of the item you want to delete"))
+    ItemDel = int(input("enter the number of the item you want to delete "))
     ItemDel = ItemDel - 1
     shopList.pop(ItemDel)
     print(shopList)
@@ -31,22 +36,26 @@ def delItem():
 def OptionSelector():
     x = 1
     while x != 0:
-        FuncChoice = int(input("Enter the number of which function you want to choose "))
-        if FuncChoice == 1:
+        FuncChoice = input("Enter the number of which function you want to choose ")
+        if FuncChoice == "1":
             shopInput()
-        elif FuncChoice == 2:
+        elif FuncChoice == "2":
             itemNum()
-        elif FuncChoice == 3:
+        elif FuncChoice == "3":
             listAmount()
-        elif FuncChoice == 4:
+        elif FuncChoice == "4":
             delItem()
+        elif FuncChoice == "5":
+            Readtxt()
         else:
             print("that is not an option")
-        x = int(input("Do you want to continue \n1 for yes \n0 for no"))
-
-print(" (1) is to input a new item\n (2) is to see what item\n (3) is to show the amount of items\n (4) is to delete an item ")
+        x = int(input("Do you want to continue \n1 for yes \n0 for no "))
+print(" (1) is to input a new item\n (2) is to see what item\n (3) is to show the amount of items\n (4) is to delete an item\n (5) is to read the current list")
 OptionSelector()
-#Creates a text file/Edits the file
-txtfile = open('ShoppingList.txt', 'w')
-txtfile.write(str(shopList))
-txtfile.close()
+#Creates a text file/Edits the file and if there is nothing it doesnt change the list
+if len(shopList) == 0:
+    exit()
+else:
+    txtfile = open('ShoppingList.txt', 'w')
+    txtfile.write(str(shopList))
+    txtfile.close()
