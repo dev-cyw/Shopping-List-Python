@@ -2,10 +2,10 @@
 shopList = []
 #Lets the user input items to add to the list and the amount of items 
 def shopInput():
-	ItemAdd = 0
-    ItemAdd = int(input("Enter the number of items you want to add "))
+    ItemAdd = 0
+    ItemAdd = int(input("Enter the number of items you want to add"))
     while ItemAdd != 0:
-        shopItem = input("Enter the name of the item to add ")
+        shopItem = input("Enter the name of the item to add.")
         shopList.append(shopItem)
         ItemAdd = ItemAdd - 1
         print(shopList)
@@ -21,6 +21,7 @@ def listAmount():
     print(shopList)
 #Lets the user to delete an item from the list
 def delItem():
+
     print(shopList)
     ItemDel = int(input("enter the number of the item you want to delete"))
     ItemDel = ItemDel - 1
@@ -41,10 +42,9 @@ def OptionSelector():
             delItem()
         else:
             print("that is not an option")
-        x = int(input("Do you want to continue \n1 for yes \n0 for no "))
+        x = int(input("Do you want to continue \n1 for yes \n0 for no"))
 
 print(" (1) is to input a new item\n (2) is to see what item\n (3) is to show the amount of items\n (4) is to delete an item ")
-
 OptionSelector()
 #Creates a text file/Edits the file
 txtfile = open('ShoppingList.txt', 'w')
